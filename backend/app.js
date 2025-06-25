@@ -64,14 +64,19 @@ app.use((error,req,res,next)=> {
 });
 
 // it will connect the node server with mongoDB database
-mongoose.connect('mongodb+srv://jyotirmay:jyotirmay27@cluster0.8su5b.mongodb.net/meditech?retryWrites=true&w=majority').then(()=> {
+mongoose.connect('mongodb+srv://jyotirmay:jyotirmay27@cluster0.8su5b.mongodb.net/meditech?retryWrites=true&w=majority',{
+     useNewUrlParser: true,
+     useUnifiedTopology: true,
+}).then(()=> {
     console.log("Mongodb atlas connected successfully.");
-    app.listen(5000);
+    
  }).catch(err => {
     console.log("Mongodb atlas connection failed.");
     console.log(err);
 });
-
+app.listen(5000,()=>{
+     console.log("Server Running Successfully.");   
+});
 // mongoose.connect('mongodb://127.0.0.1:27017/meditech', {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
