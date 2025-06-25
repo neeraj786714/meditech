@@ -9,7 +9,7 @@ const HttpError = require('./HttpError');
 
 
 // const { MongoClient } = require('mongodb');
-// const uri = process.env.MONGO_URI || "mongodb+srv://<username>:<password>@cluster0.8su5b.mongodb.net/<database>?retryWrites=true&w=majority";
+const uri = process.env.MONGOURI;
 
 
 
@@ -64,12 +64,11 @@ app.use((error,req,res,next)=> {
 });
 
 // it will connect the node server with mongoDB database
-mongoose.connect('mongodb+srv://jyotirmay:jyotirmay27@cluster0.8su5b.mongodb.net/meditech?retryWrites=true&w=majority',{
+mongoose.connect(uri,{
      useNewUrlParser: true,
      useUnifiedTopology: true,
 }).then(()=> {
     console.log("Mongodb atlas connected successfully.");
-    
  }).catch(err => {
     console.log("Mongodb atlas connection failed.");
     console.log(err);
