@@ -8,6 +8,7 @@ export const useHttpClient = () => {
 
   const sendRequest = useCallback(
     async (url, method = 'GET', body = null, headers = {}) => {
+      const url=REACT_APP_BACKEND_URL;
       setIsLoading(true);
       const httpAbortCtrl = new AbortController();
       activeHttpRequests.current.push(httpAbortCtrl);
